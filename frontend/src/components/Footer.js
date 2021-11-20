@@ -7,7 +7,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className="text-center py-3">
-            This is my footer &copy; NiceShop
+            &copy; Copyright 2021 - NiceShop Company Name. All rights reserved.
           </Col>
         </Row>
       </Container>
