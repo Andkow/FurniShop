@@ -5,7 +5,7 @@ import { FaShoppingBag, FaSignInAlt } from "react-icons/fa";
 const Navheader = () => {
   return (
     <header>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" variant="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">NiceShop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
