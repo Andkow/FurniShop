@@ -28,7 +28,7 @@ const Footer = () => {
             </div>
             <div className="col-md-3 col-sm-6">
               <div className="footer-pad">
-                <h4>Contact Us</h4>
+                <h4>Stay in Touch</h4>
                 <ul className="list-unstyled">
                   <li>
                     <a href="/">Address</a>
