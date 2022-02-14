@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Navheader from "./components/Navheader";
 import Footer from "./components/Footer";
-import HomeScreen from "./screens/HomeScreen";
+import HomeView from "./views/HomeView";
+import ProductView from "./views/ProductView";
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <main className="py-4">
         <Container>
           <Routes>
-            <Route path="/" element={<HomeScreen />} exact />
+            <Route path="/" element={<HomeView />} exact />
+            <Route path="/product/:id" element={<ProductView />} exact />
           </Routes>
         </Container>
       </main>
