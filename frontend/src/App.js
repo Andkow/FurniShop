@@ -5,6 +5,7 @@ import Navheader from "./components/Navheader";
 import Footer from "./components/Footer";
 import HomeView from "./views/HomeView";
 import ProductView from "./views/ProductView";
+import CartView from "./views/CartView";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeView />} exact />
             <Route path="/product/:id" element={<ProductView />} exact />
+            <Route path="/cart/:id" element={<CartView />} exact />
           </Routes>
         </Container>
       </main>
