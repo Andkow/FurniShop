@@ -23,3 +23,10 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Seeder for data
+backend/seeder.js
+
+
+#     "data:import": "node backend/seeder",
+#    "data:destroy": "node backend/seeder -d"

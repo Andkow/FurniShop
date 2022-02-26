@@ -11,7 +11,7 @@ const reviewSchema = mongoose.Schema(
   }
 );
 
-const productSchema = mongoose.Schema(
+const itemSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -65,6 +65,6 @@ const productSchema = mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", productSchema);
+const Item = mongoose.model("Item", itemSchema);
 
-export default Product;
+export default Item;

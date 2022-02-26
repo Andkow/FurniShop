@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/Andkow/e-commerceShop#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.2.3"
   },
   "devDependencies": {

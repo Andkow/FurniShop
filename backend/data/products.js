@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: "1",
     name: "Computer Desk with Bookshelf",
     image: "/images/ComputerDesk.jpg",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 19,
   },
   {
-    _id: "2",
     name: "Modern L Shaped Corner Desk",
     image: "/images/CornerDesk.jpg",
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 27,
   },
   {
-    _id: "3",
     name: "Sideboard Chest of Drawers Massa in Antique Steel",
     image: "/images/ChestOfDrawers.jpg",
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "4",
     name: "Industrial Bookshelf, Metal and Wood Bookcase",
     image: "/images/industrialBookshelf.jpg",
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 27,
   },
   {
-    _id: "5",
     name: "Shoe Shelf Mesh Storage Shelf",
     image: "/images/ShoeBench.jpg",
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: "6",
     name: "Coffee Table with Open Shelf",
     image: "/images/coffeeTable.jpg",
     description:
