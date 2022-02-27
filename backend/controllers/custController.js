@@ -26,4 +26,24 @@ const authCust = asyncHandler(async (req, res) => {
   }
 });
 
-export { authCust };
+// Get user profile
+// GET /api/users/profile
+// Private
+const getCustProfile = asyncHandler(async (req, res) => {
+  // Finding user by id
+  const cust = await Cust.findById(req.cust._id);
+
+  if (cust) {
+    res.json({
+      _id: cust._id,
+      name: cust.name,
+      email: cust.email,
+      isAdmin: cust.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("Customer not found");
+  }
+});
+
+export { authCust, getCustProfile };
