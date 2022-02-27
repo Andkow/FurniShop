@@ -19,18 +19,17 @@ const Navheader = () => {
                   <FaShoppingBag /> Bag
                 </Nav.Link>
               </LinkContainer>
-
+              <LinkContainer to="/login">
+                <Nav.Link>
+                  <FaSignInAlt /> Sign In
+                </Nav.Link>
+              </LinkContainer>
               <NavDropdown>
                 <LinkContainer to="/profile">
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Item>Logout</NavDropdown.Item>
               </NavDropdown>
-              <LinkContainer to="/login">
-                <Nav.Link>
-                  <FaSignInAlt /> Sign In
-                </Nav.Link>
-              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
