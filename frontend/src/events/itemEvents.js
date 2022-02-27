@@ -8,10 +8,12 @@ import {
   ITEM_DETAILS_FAIL,
 } from "../constants/itemConstants";
 
+// Fetching data from "/api/items"
 export const listItems = () => async (dispatch) => {
   try {
     dispatch({ type: ITEM_LIST_REQUEST });
 
+    // Requesting data
     const { data } = await axios.get("/api/items");
 
     dispatch({
@@ -22,17 +24,19 @@ export const listItems = () => async (dispatch) => {
     dispatch({
       type: ITEM_LIST_FAIL,
       payload:
-        error.response && error.response.data.message
+        error.response && error.response.data.message //Getting custom error
           ? error.response.data.message
           : error.message,
     });
   }
 };
 
+// Fetching data from "/api/items/:id"
 export const listItemDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ITEM_DETAILS_REQUEST });
 
+    // Requesting data
     const { data } = await axios.get(`/api/items/${id}`);
 
     dispatch({

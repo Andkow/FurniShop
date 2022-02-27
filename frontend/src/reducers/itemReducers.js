@@ -7,6 +7,7 @@ import {
   ITEM_DETAILS_FAIL,
 } from "../constants/itemConstants";
 
+// Handling state for product list on home page
 export const itemListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case ITEM_LIST_REQUEST:
@@ -20,6 +21,7 @@ export const itemListReducer = (state = { products: [] }, action) => {
   }
 };
 
+// Handling state for
 export const itemDetailsReducer = (
   state = { product: { reviews: [] } },
   action
