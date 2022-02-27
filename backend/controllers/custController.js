@@ -26,6 +26,40 @@ const authCust = asyncHandler(async (req, res) => {
   }
 });
 
+// Creating/Registering a new user
+// POST /api/users
+// Public
+const registerCust = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+
+  // Checking if user exists using an email
+  const custExists = await Cust.findOne({ email });
+
+  if (custExists) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+
+  const cust = await Cust.create({
+    name,
+    email,
+    password,
+  });
+
+  if (cust) {
+    res.status(201).json({
+      _id: cust._id,
+      name: cust.name,
+      email: cust.email,
+      isAdmin: cust.isAdmin,
+      token: tokenGen(cust._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid customer data");
+  }
+});
+
 // Get user profile
 // GET /api/users/profile
 // Private
@@ -46,4 +80,4 @@ const getCustProfile = asyncHandler(async (req, res) => {
   }
 });
 
-export { authCust, getCustProfile };
+export { authCust, registerCust, getCustProfile };
