@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import HomeView from "./views/HomeView";
 import ProductView from "./views/ProductView";
 import CartView from "./views/CartView";
+import LoginView from "./views/LoginView";
 
 const App = () => {
   return (
@@ -14,9 +15,10 @@ const App = () => {
       <main className="py-4">
         <Container>
           <Routes>
-            <Route path="/" element={<HomeView />} exact />
+            <Route path="/login" element={<LoginView />} exact />
             <Route path="/product/:id" element={<ProductView />} exact />
             <Route path="/cart/:id" element={<CartView />} exact />
+            <Route path="/" element={<HomeView />} exact />
           </Routes>
         </Container>
       </main>

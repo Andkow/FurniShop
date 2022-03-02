@@ -33,11 +33,11 @@ const CartView = () => {
     }
   }, [dispatch, id, qty]);
 
-  const removeFromCartHandler = (id) => {
+  const deleteFromCart = (id) => {
     dispatch(removeFromCart(id));
   };
 
-  const checkoutHandler = () => {
+  const checkoutAction = () => {
     navigate("/login?redirect=/shipping");
   };
 
@@ -82,7 +82,7 @@ const CartView = () => {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={() => removeFromCartHandler(item.product)}
+                      onClick={() => deleteFromCart(item.product)}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
@@ -111,7 +111,7 @@ const CartView = () => {
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length === 0}
-                onClick={checkoutHandler}
+                onClick={checkoutAction}
               >
                 Proceed To Checkout
               </Button>
