@@ -3,6 +3,7 @@ import {
   CUST_LOGIN_FAIL,
   CUST_LOGIN_REQUEST,
   CUST_LOGIN_SUCCESS,
+  CUST_LOGOUT,
 } from "../constants/custConstants";
 
 // Different actions for users, login, logout and fail
@@ -42,4 +43,9 @@ export const login = (email, password) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: CUST_LOGOUT });
 };
