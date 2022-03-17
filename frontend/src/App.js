@@ -7,6 +7,7 @@ import HomeView from "./views/HomeView";
 import ProductView from "./views/ProductView";
 import CartView from "./views/CartView";
 import LoginView from "./views/LoginView";
+import SignupView from "./views/SignupView";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Container>
           <Routes>
             <Route path="/login" element={<LoginView />} exact />
+            <Route path="/register" element={<SignupView />} exact />
             <Route path="/product/:id" element={<ProductView />} exact />
             <Route path="/cart/:id" element={<CartView />} exact />
             <Route path="/" element={<HomeView />} exact />

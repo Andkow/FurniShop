@@ -24,7 +24,7 @@ const Navheader = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <LinkContainer to="/cart">
+              <LinkContainer to="/cart/:id">
                 <Nav.Link>
                   <FaShoppingBag /> Bag
                 </Nav.Link>
