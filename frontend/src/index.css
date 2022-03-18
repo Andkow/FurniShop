@@ -16,6 +16,11 @@ h2 {
   padding: 0.5rem 0;
 }
 
+.selectForm {
+  padding: 0.55rem 0.3rem;
+  text-align: center;
+}
+
 .rating span {
   margin: 0.1rem;
 }
