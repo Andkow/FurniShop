@@ -10,6 +10,7 @@ import LoginView from "./views/LoginView";
 import SignupView from "./views/SignupView";
 import ProfileView from "./views/ProfileView";
 import ShippingView from "./views/ShippingView";
+import PaymentView from "./views/PaymentView";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Container>
           <Routes>
             <Route path="/shipping" element={<ShippingView />} exact />
+            <Route path="/payment" element={<PaymentView />} exact />
             <Route path="/login" element={<LoginView />} exact />
             <Route path="/register" element={<SignupView />} exact />
             <Route path="/profile" element={<ProfileView />} exact />

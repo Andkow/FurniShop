@@ -63,6 +63,7 @@ const CartView = () => {
                   <Col md={2}>€{item.price}</Col>
                   <Col md={2}>
                     <Form.Control
+                      className="selectForm"
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
