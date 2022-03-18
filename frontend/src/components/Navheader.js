@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { FaShoppingBag, FaSignInAlt } from "react-icons/fa";
+import { GiArchiveRegister } from "react-icons/gi";
 import { logout } from "../events/custEvents.js";
 
 const Navheader = () => {
@@ -25,7 +26,7 @@ const Navheader = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <LinkContainer to="/cart/:id">
-                <Nav.Link>
+                <Nav.Link active={false}>
                   <FaShoppingBag /> Bag
                 </Nav.Link>
               </LinkContainer>
@@ -40,11 +41,16 @@ const Navheader = () => {
                 </NavDropdown>
               ) : (
                 <LinkContainer to="/login">
-                  <Nav.Link>
-                    <FaSignInAlt /> Sign In
+                  <Nav.Link active={false}>
+                    <FaSignInAlt /> Login
                   </Nav.Link>
                 </LinkContainer>
               )}
+              <LinkContainer to="/register">
+                <Nav.Link active={false}>
+                  <GiArchiveRegister /> Sign Up
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
