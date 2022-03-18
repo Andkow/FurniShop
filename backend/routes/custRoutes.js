@@ -4,11 +4,15 @@ import {
   authCust,
   getCustProfile,
   registerCust,
+  updateCustProfile,
 } from "../controllers/custController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 router.route("/").post(registerCust);
 router.post("/login", authCust);
-router.route("/profile").get(protect, getCustProfile);
+router
+  .route("/profile")
+  .get(protect, getCustProfile)
+  .put(protect, updateCustProfile);
 
 export default router;

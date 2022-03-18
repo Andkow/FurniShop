@@ -8,6 +8,7 @@ import ProductView from "./views/ProductView";
 import CartView from "./views/CartView";
 import LoginView from "./views/LoginView";
 import SignupView from "./views/SignupView";
+import ProfileView from "./views/ProfileView";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<LoginView />} exact />
             <Route path="/register" element={<SignupView />} exact />
+            <Route path="/profile" element={<ProfileView />} exact />
             <Route path="/product/:id" element={<ProductView />} exact />
             <Route path="/cart/:id" element={<CartView />} exact />
             <Route path="/" element={<HomeView />} exact />
