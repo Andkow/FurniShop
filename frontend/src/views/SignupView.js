@@ -22,7 +22,6 @@ const SignupView = () => {
   const custSignup = useSelector((state) => state.custSignup);
   const { loading, error, userInfo } = custSignup;
 
-  //const redirect = location.search ? location.search.split('=')[1] : '/'
   // Checking URL query string to define redirect
   const redirect = [...searchParams].length > 0 ? [...searchParams][0][1] : "/";
 

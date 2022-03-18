@@ -21,16 +21,26 @@ const reducer = combineReducers({
   custUpdateProfile: custUpdateProfileReducer,
 });
 
+// Loading items from local storage
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
+// Loading user info from local storage
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
+// Loading address from local storage
+const shippingAddFromStorage = localStorage.getItem("shippingAdd")
+  ? JSON.parse(localStorage.getItem("shippingAdd"))
+  : {};
+
 const initialState = {
-  cart: { cartItems: cartItemsFromStorage },
+  cart: {
+    cartItems: cartItemsFromStorage,
+    shippingAdd: shippingAddFromStorage,
+  },
   userLogin: { userInfo: userInfoFromStorage },
 };
 
