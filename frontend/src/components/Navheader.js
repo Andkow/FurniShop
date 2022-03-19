@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
@@ -20,7 +21,7 @@ const Navheader = () => {
       <Navbar bg="light" variant="light" expand="lg">
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>NiceShop</Navbar.Brand>
+            <img src={logo} alt="Comfy Shop" />
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
