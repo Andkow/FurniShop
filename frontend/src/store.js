@@ -9,6 +9,7 @@ import {
   custDetailsReducer,
   custUpdateProfileReducer,
 } from "./reducers/custReducers";
+import { orderCreateReducer } from "./reducers/orderReducers";
 
 // reducers to handle piece of functionality
 const reducer = combineReducers({
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   custSignup: custSignupReducer,
   custDetails: custDetailsReducer,
   custUpdateProfile: custUpdateProfileReducer,
+  orderCreate: orderCreateReducer,
 });
 
 // Loading items from local storage
@@ -32,14 +34,14 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
   : null;
 
 // Loading address from local storage
-const shippingAddFromStorage = localStorage.getItem("shippingAdd")
-  ? JSON.parse(localStorage.getItem("shippingAdd"))
+const shippingAddFromStorage = localStorage.getItem("shippingAddress")
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
   : {};
 
 const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
-    shippingAdd: shippingAddFromStorage,
+    shippingAddress: shippingAddFromStorage,
   },
   userLogin: { userInfo: userInfoFromStorage },
 };

@@ -8,13 +8,13 @@ import {
   ITEM_DETAILS_FAIL,
 } from "../constants/itemConstants";
 
-// Fetching data from "/api/items"
+// Fetching data from "/api/products"
 export const listItems = () => async (dispatch) => {
   try {
     dispatch({ type: ITEM_LIST_REQUEST });
 
     // Requesting data
-    const { data } = await axios.get("/api/items");
+    const { data } = await axios.get("/api/products");
 
     dispatch({
       type: ITEM_LIST_SUCCESS,
@@ -37,7 +37,7 @@ export const listItemDetails = (id) => async (dispatch) => {
     dispatch({ type: ITEM_DETAILS_REQUEST });
 
     // Requesting data
-    const { data } = await axios.get(`/api/items/${id}`);
+    const { data } = await axios.get(`/api/products/${id}`);
 
     dispatch({
       type: ITEM_DETAILS_SUCCESS,

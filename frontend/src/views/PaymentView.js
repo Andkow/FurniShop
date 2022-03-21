@@ -8,10 +8,10 @@ import { savePaymentMethod } from "../events/cartEvents";
 
 const PaymentView = () => {
   const cart = useSelector((state) => state.cart);
-  const { shippingAdd } = cart;
+  const { shippingAddress } = cart;
   const navigate = useNavigate();
 
-  if (!shippingAdd) {
+  if (!shippingAddress) {
     navigate("/shipping");
   }
 

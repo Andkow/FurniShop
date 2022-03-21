@@ -4,23 +4,23 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { saveShippingAdd } from "../events/cartEvents";
+import { saveShippingAddress } from "../events/cartEvents";
 
 const ShippingView = () => {
   const cart = useSelector((state) => state.cart);
-  const { shippingAdd } = cart;
+  const { shippingAddress } = cart;
 
-  const [address, setAdd] = useState(shippingAdd.address || "");
-  const [city, setCity] = useState(shippingAdd.city || "");
-  const [postCode, setPostCode] = useState(shippingAdd.postCode || "");
-  const [country, setCountry] = useState(shippingAdd.country || "");
+  const [address, setAdd] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAdd({ address, city, postCode, country }));
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
 
@@ -51,14 +51,14 @@ const ShippingView = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="postCode">
+        <Form.Group controlId="postalCode">
           <Form.Label>Postal Code</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter postal code"
-            value={postCode}
+            value={postalCode}
             required
-            onChange={(e) => setPostCode(e.target.value)}
+            onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
