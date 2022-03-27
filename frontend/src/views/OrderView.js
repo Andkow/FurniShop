@@ -38,7 +38,7 @@ const OrderView = () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=EUR`;
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -47,6 +47,8 @@ const OrderView = () => {
     };
 
     if (!order || successPay) {
+      //setTimeout(() => dispatch({ type: ORDER_PAY_RESET }), 3000);
+      //setTimeout();
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(id));
     } else if (!order.isPaid) {
@@ -183,6 +185,9 @@ const OrderView = () => {
                     <PayPalButton
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
+                      options={{
+                        currency: "EUR",
+                      }}
                     />
                   )}
                 </ListGroup.Item>
