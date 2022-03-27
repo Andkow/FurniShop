@@ -30,3 +30,4 @@ backend/seeder.js
 
 #     "data:import": "node backend/seeder",
 #    "data:destroy": "node backend/seeder -d"
+#      Kill node: pkill -f node
