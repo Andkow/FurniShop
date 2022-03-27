@@ -1,6 +1,7 @@
 import {
   CUST_DETAILS_FAIL,
   CUST_DETAILS_REQUEST,
+  CUST_DETAILS_RESET,
   CUST_DETAILS_SUCCESS,
   CUST_LOGIN_FAIL,
   CUST_LOGIN_REQUEST,
@@ -37,6 +38,8 @@ export const custSignupReducer = (state = {}, action) => {
       return { loading: false, userInfo: action.payload };
     case CUST_REGISTER_FAIL:
       return { loading: false, error: action.payload };
+    case CUST_LOGOUT:
+      return {};
     default:
       return state;
   }
@@ -50,6 +53,8 @@ export const custDetailsReducer = (state = { user: {} }, action) => {
       return { loading: false, user: action.payload };
     case CUST_DETAILS_FAIL:
       return { loading: false, error: action.payload };
+    case CUST_DETAILS_RESET:
+      return { user: {} };
     default:
       return state;
   }
