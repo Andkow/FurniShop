@@ -13,7 +13,9 @@ import {
   CUST_UPDATE_PROFILE_FAIL,
   CUST_UPDATE_PROFILE_REQUEST,
   CUST_UPDATE_PROFILE_SUCCESS,
+  CUST_DETAILS_RESET,
 } from "../constants/custConstants";
+import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 
 // Different actions for users, login, logout and fail
 export const login = (email, password) => async (dispatch) => {
@@ -57,6 +59,8 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: CUST_LOGOUT });
+  dispatch({ type: CUST_DETAILS_RESET });
+  dispatch({ type: ORDER_LIST_MY_RESET });
 };
 
 export const signup = (name, email, password) => async (dispatch) => {
@@ -157,6 +161,10 @@ export const updateCustProfile = (user) => async (dispatch, getState) => {
 
     dispatch({
       type: CUST_UPDATE_PROFILE_SUCCESS,
+      payload: data,
+    });
+    dispatch({
+      type: CUST_LOGIN_SUCCESS,
       payload: data,
     });
   } catch (error) {
