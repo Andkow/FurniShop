@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../events/orderEvents";
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
+import { CUST_DETAILS_RESET } from "../constants/custConstants";
 
 const PlaceOrderView = () => {
   const dispatch = useDispatch();
@@ -31,9 +33,10 @@ const PlaceOrderView = () => {
   useEffect(() => {
     if (success) {
       navigate(`/order/${order._id}`);
+      dispatch({ type: CUST_DETAILS_RESET });
+      dispatch({ type: ORDER_CREATE_RESET });
     }
-    // eslint-disable-next-line
-  }, [navigate, success, order]);
+  }, [navigate, dispatch, success, order]);
 
   const placeOrderHandler = () => {
     console.log("order");
