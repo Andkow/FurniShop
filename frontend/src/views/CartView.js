@@ -37,6 +37,10 @@ const CartView = () => {
     dispatch(removeFromCart(id));
   };
 
+  const continueShopping = () => {
+    navigate("/");
+  };
+
   const checkoutAction = () => {
     navigate("/login?redirect=/shipping");
   };
@@ -115,6 +119,16 @@ const CartView = () => {
                 onClick={checkoutAction}
               >
                 Proceed To Checkout
+              </Button>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type="button"
+                className="btn-block"
+                disabled={cartItems.length === 0}
+                onClick={continueShopping}
+              >
+                Continue Shopping
               </Button>
             </ListGroup.Item>
           </ListGroup>
