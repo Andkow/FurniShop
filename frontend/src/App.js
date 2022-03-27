@@ -12,6 +12,7 @@ import ProfileView from "./views/ProfileView";
 import ShippingView from "./views/ShippingView";
 import PaymentView from "./views/PaymentView";
 import PlaceOrderView from "./views/PlaceOrderView";
+import OrderView from "./views/OrderView";
 
 const App = () => {
   return (
@@ -20,14 +21,15 @@ const App = () => {
       <main className="py-4">
         <Container>
           <Routes>
-            <Route path="/shipping" element={<ShippingView />} exact />
-            <Route path="/payment" element={<PaymentView />} exact />
-            <Route path="/placeorder" element={<PlaceOrderView />} exact />
-            <Route path="/login" element={<LoginView />} exact />
-            <Route path="/register" element={<SignupView />} exact />
-            <Route path="/profile" element={<ProfileView />} exact />
-            <Route path="/product/:id" element={<ProductView />} exact />
-            <Route path="/cart/:id" element={<CartView />} exact />
+            <Route path="/order/:id" element={<OrderView />} />
+            <Route path="/shipping" element={<ShippingView />} />
+            <Route path="/payment" element={<PaymentView />} />
+            <Route path="/placeorder" element={<PlaceOrderView />} />
+            <Route path="/login" element={<LoginView />} />
+            <Route path="/register" element={<SignupView />} />
+            <Route path="/profile" element={<ProfileView />} />
+            <Route path="/product/:id" element={<ProductView />} />
+            <Route path="/cart/:id" element={<CartView />} />
             <Route path="/" element={<HomeView />} exact />
           </Routes>
         </Container>

@@ -9,8 +9,8 @@ import { login } from "../events/custEvents";
 
 const LoginView = () => {
   // Component level states
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(""); //Component level state for email
+  const [password, setPassword] = useState(""); //Component level state for password
   const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
@@ -41,7 +41,14 @@ const LoginView = () => {
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHelper}>
-        <Form.Group controlId="email">
+        <Form.Group
+          controlId="email"
+          type="email"
+          name="email"
+          id="frmEmailA"
+          required
+          autoComplete="email"
+        >
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"

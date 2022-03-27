@@ -63,7 +63,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-12 copy">
               <p className="text-center">
-                &copy; Copyright 2021 - Nice Shop. All rights reserved.
+                &copy; Copyright 2021 - Comfy Shop. All rights reserved.
               </p>
             </div>
           </div>

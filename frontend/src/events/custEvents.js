@@ -65,12 +65,14 @@ export const signup = (name, email, password) => async (dispatch) => {
       type: CUST_REGISTER_REQUEST,
     });
 
+    // Creating config object to send data headers content type
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
+    // Request to API
     const { data } = await axios.post(
       "/api/users",
       { name, email, password },
@@ -87,6 +89,7 @@ export const signup = (name, email, password) => async (dispatch) => {
       payload: data,
     });
 
+    // Storing user object as a string on local storage
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({

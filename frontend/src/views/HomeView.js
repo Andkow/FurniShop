@@ -18,7 +18,9 @@ const HomeView = () => {
 
   return (
     <>
-      <h1>Latest Products</h1>
+      <h1 className="text-center">
+        <strong>Latest Products</strong>
+      </h1>
       {loading ? (
         <Loader />
       ) : error ? (

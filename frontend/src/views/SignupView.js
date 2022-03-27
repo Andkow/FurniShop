@@ -8,11 +8,11 @@ import FormContainer from "../components/FormContainer";
 import { signup } from "../events/custEvents";
 
 const SignupView = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
+  const [name, setName] = useState(""); //Component level state for name
+  const [email, setEmail] = useState(""); //Component level state for email
+  const [password, setPassword] = useState(""); //Component level state for password
+  const [confirmPassword, setConfirmPassword] = useState(""); //Component level state for confirming password
+  const [message, setMessage] = useState(null); //Component level state for message
 
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();

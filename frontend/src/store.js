@@ -9,7 +9,10 @@ import {
   custDetailsReducer,
   custUpdateProfileReducer,
 } from "./reducers/custReducers";
-import { orderCreateReducer } from "./reducers/orderReducers";
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+} from "./reducers/orderReducers";
 
 // reducers to handle piece of functionality
 const reducer = combineReducers({
@@ -21,6 +24,7 @@ const reducer = combineReducers({
   custDetails: custDetailsReducer,
   custUpdateProfile: custUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
 });
 
 // Loading items from local storage
