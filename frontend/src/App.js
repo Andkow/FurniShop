@@ -13,6 +13,7 @@ import ShippingView from "./views/ShippingView";
 import PaymentView from "./views/PaymentView";
 import PlaceOrderView from "./views/PlaceOrderView";
 import OrderView from "./views/OrderView";
+import UserListView from "./views/UserListView";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/profile" element={<ProfileView />} />
             <Route path="/product/:id" element={<ProductView />} />
             <Route path="/cart/:id" element={<CartView />} />
+            <Route path="/admin/userlist" element={<UserListView />} />
             <Route path="/" element={<HomeView />} exact />
           </Routes>
         </Container>

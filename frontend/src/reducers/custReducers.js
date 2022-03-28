@@ -3,6 +3,9 @@ import {
   CUST_DETAILS_REQUEST,
   CUST_DETAILS_RESET,
   CUST_DETAILS_SUCCESS,
+  CUST_LIST_REQUEST,
+  CUST_LIST_SUCCESS,
+  CUST_LIST_FAIL,
   CUST_LOGIN_FAIL,
   CUST_LOGIN_REQUEST,
   CUST_LOGIN_SUCCESS,
@@ -67,6 +70,19 @@ export const custUpdateProfileReducer = (state = {}, action) => {
     case CUST_UPDATE_PROFILE_SUCCESS:
       return { loading: false, success: true, userInfo: action.payload };
     case CUST_UPDATE_PROFILE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userListReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case CUST_LIST_REQUEST:
+      return { loading: true };
+    case CUST_LIST_SUCCESS:
+      return { loading: false, users: action.payload };
+    case CUST_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

@@ -14,6 +14,9 @@ import {
   CUST_UPDATE_PROFILE_REQUEST,
   CUST_UPDATE_PROFILE_SUCCESS,
   CUST_DETAILS_RESET,
+  CUST_LIST_FAIL,
+  CUST_LIST_SUCCESS,
+  CUST_LIST_REQUEST,
 } from "../constants/custConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 
@@ -170,6 +173,39 @@ export const updateCustProfile = (user) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CUST_UPDATE_PROFILE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CUST_LIST_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users`, config);
+
+    dispatch({
+      type: CUST_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: CUST_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
