@@ -18,6 +18,9 @@ import {
   CUST_LIST_SUCCESS,
   CUST_LIST_REQUEST,
   CUST_LIST_RESET,
+  CUST_DELETE_REQUEST,
+  CUST_DELETE_SUCCESS,
+  CUST_DELETE_FAIL,
 } from "../constants/custConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 
@@ -208,6 +211,37 @@ export const listUsers = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CUST_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const deleteUser = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CUST_DELETE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    // eslint-disable-next-line no-unused-vars
+    const { data } = await axios.delete(`/api/users/${id}`, config);
+
+    dispatch({ type: CUST_DELETE_SUCCESS });
+  } catch (error) {
+    dispatch({
+      type: CUST_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
