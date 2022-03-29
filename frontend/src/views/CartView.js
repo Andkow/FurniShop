@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import mongoose from "mongoose";
 import {
   Row,
   Col,
@@ -28,7 +29,7 @@ const CartView = () => {
   const { cartItems } = cart;
 
   useEffect(() => {
-    if (id) {
+    if (mongoose.Types.ObjectId.isValid(id)) {
       dispatch(addToCart(id, qty));
     }
   }, [dispatch, id, qty]);
