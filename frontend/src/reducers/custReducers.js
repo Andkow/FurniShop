@@ -6,6 +6,7 @@ import {
   CUST_LIST_REQUEST,
   CUST_LIST_SUCCESS,
   CUST_LIST_FAIL,
+  CUST_LIST_RESET,
   CUST_LOGIN_FAIL,
   CUST_LOGIN_REQUEST,
   CUST_LOGIN_SUCCESS,
@@ -84,6 +85,8 @@ export const userListReducer = (state = { users: [] }, action) => {
       return { loading: false, users: action.payload };
     case CUST_LIST_FAIL:
       return { loading: false, error: action.payload };
+    case CUST_LIST_RESET:
+      return { users: [] };
     default:
       return state;
   }

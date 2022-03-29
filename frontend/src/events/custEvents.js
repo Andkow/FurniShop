@@ -17,6 +17,7 @@ import {
   CUST_LIST_FAIL,
   CUST_LIST_SUCCESS,
   CUST_LIST_REQUEST,
+  CUST_LIST_RESET,
 } from "../constants/custConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 
@@ -64,6 +65,7 @@ export const logout = () => (dispatch) => {
   dispatch({ type: CUST_LOGOUT });
   dispatch({ type: CUST_DETAILS_RESET });
   dispatch({ type: ORDER_LIST_MY_RESET });
+  dispatch({ type: CUST_LIST_RESET });
 };
 
 export const signup = (name, email, password) => async (dispatch) => {
