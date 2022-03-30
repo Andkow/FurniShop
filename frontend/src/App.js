@@ -15,6 +15,7 @@ import PlaceOrderView from "./views/PlaceOrderView";
 import OrderView from "./views/OrderView";
 import UserListView from "./views/UserListView";
 import UserEditView from "./views/UserEditView";
+import ProductListView from "./views/ProductListView";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/cart/:id" element={<CartView />} />
             <Route path="/admin/userlist" element={<UserListView />} />
             <Route path="/admin/user/:id/edit" element={<UserEditView />} />
+            <Route path="/admin/productlist" element={<ProductListView />} />
             <Route path="/" element={<HomeView />} exact />
           </Routes>
         </Container>
