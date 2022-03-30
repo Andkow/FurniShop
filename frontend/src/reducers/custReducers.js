@@ -20,6 +20,10 @@ import {
   CUST_DELETE_REQUEST,
   CUST_DELETE_SUCCESS,
   CUST_DELETE_FAIL,
+  CUST_UPDATE_RESET,
+  CUST_UPDATE_REQUEST,
+  CUST_UPDATE_SUCCESS,
+  CUST_UPDATE_FAIL,
 } from "../constants/custConstants";
 
 export const custLoginReducer = (state = {}, action) => {
@@ -103,6 +107,23 @@ export const userDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case CUST_DELETE_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userUpdateReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case CUST_UPDATE_REQUEST:
+      return { loading: true };
+    case CUST_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case CUST_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case CUST_UPDATE_RESET:
+      return {
+        user: {},
+      };
     default:
       return state;
   }
