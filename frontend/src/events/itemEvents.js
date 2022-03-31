@@ -9,6 +9,9 @@ import {
   ITEM_DELETE_SUCCESS,
   ITEM_DELETE_REQUEST,
   ITEM_DELETE_FAIL,
+  ITEM_CREATE_REQUEST,
+  ITEM_CREATE_SUCCESS,
+  ITEM_CREATE_FAIL,
 } from "../constants/itemConstants";
 
 // Fetching data from "/api/products"
@@ -81,6 +84,39 @@ export const deleteItem = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ITEM_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const createItem = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ITEM_CREATE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(`/api/products`, {}, config);
+
+    dispatch({
+      type: ITEM_CREATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ITEM_CREATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
