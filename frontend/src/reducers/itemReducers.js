@@ -5,6 +5,9 @@ import {
   ITEM_DETAILS_REQUEST,
   ITEM_DETAILS_SUCCESS,
   ITEM_DETAILS_FAIL,
+  ITEM_DELETE_REQUEST,
+  ITEM_DELETE_SUCCESS,
+  ITEM_DELETE_FAIL,
 } from "../constants/itemConstants";
 
 // Handling state for product list on home page
@@ -32,6 +35,19 @@ export const itemDetailsReducer = (
     case ITEM_DETAILS_SUCCESS:
       return { loading: false, product: action.payload };
     case ITEM_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const itemDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ITEM_DELETE_REQUEST:
+      return { loading: true };
+    case ITEM_DELETE_SUCCESS:
+      return { loading: false, success: true };
+    case ITEM_DELETE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
