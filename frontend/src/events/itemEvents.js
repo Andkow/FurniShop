@@ -12,6 +12,9 @@ import {
   ITEM_CREATE_REQUEST,
   ITEM_CREATE_SUCCESS,
   ITEM_CREATE_FAIL,
+  ITEM_UPDATE_REQUEST,
+  ITEM_UPDATE_SUCCESS,
+  ITEM_UPDATE_FAIL,
 } from "../constants/itemConstants";
 
 // Fetching data from "/api/products"
@@ -117,6 +120,44 @@ export const createItem = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: ITEM_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ITEM_UPDATE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/products/${product._id}`,
+      product,
+      config
+    );
+
+    dispatch({
+      type: ITEM_UPDATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ITEM_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

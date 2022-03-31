@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
-import { listItemDetails } from "../events/itemEvents";
+import { listItemDetails, updateProduct } from "../events/itemEvents";
+import { ITEM_UPDATE_RESET } from "../constants/itemConstants";
 
 const ProductEditView = () => {
   const navigate = useNavigate();
@@ -24,23 +25,47 @@ const ProductEditView = () => {
   const itemDetails = useSelector((state) => state.itemDetails);
   const { loading, error, product } = itemDetails;
 
+  const productUpdate = useSelector((state) => state.productUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = productUpdate;
+
   useEffect(() => {
-    if (!product.name || product._id !== id) {
-      dispatch(listItemDetails(id));
+    if (successUpdate) {
+      dispatch({ type: ITEM_UPDATE_RESET });
+      navigate("/admin/productlist");
     } else {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setBrand(product.brand);
-      setCategory(product.category);
-      setCountInStock(product.countInSock);
-      setDescription(product.description);
+      if (!product.name || product._id !== id) {
+        dispatch(listItemDetails(id));
+      } else {
+        setName(product.name);
+        setPrice(product.price);
+        setImage(product.image);
+        setBrand(product.brand);
+        setCategory(product.category);
+        setCountInStock(product.countInSock);
+        setDescription(product.description);
+      }
     }
-  }, [dispatch, navigate, id, product]);
+  }, [dispatch, navigate, id, product, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     // UPDATE PRODUCT
+    dispatch(
+      updateProduct({
+        _id: id,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        description,
+        countInStock,
+      })
+    );
   };
 
   return (
@@ -50,6 +75,8 @@ const ProductEditView = () => {
       </Link>
       <FormContainer>
         <h1>Edit Product</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
