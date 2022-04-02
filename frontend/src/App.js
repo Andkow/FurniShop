@@ -17,6 +17,7 @@ import UserListView from "./views/UserListView";
 import UserEditView from "./views/UserEditView";
 import ProductListView from "./views/ProductListView";
 import ProductEditView from "./views/ProductEditView";
+import OrderListView from "./views/OrderListView";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
               path="/admin/product/:id/edit"
               element={<ProductEditView />}
             />
+            <Route path="/admin/orderlist" element={<OrderListView />} />
             <Route path="/" element={<HomeView />} exact />
           </Routes>
         </Container>
