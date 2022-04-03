@@ -68,7 +68,7 @@ const SignupView = () => {
         </Form.Group>
 
         <Form.Group controlId="password">
-          <Form.Label>Password Address</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Enter password"
