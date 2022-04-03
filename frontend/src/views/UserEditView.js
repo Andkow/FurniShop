@@ -14,7 +14,7 @@ const UserEditView = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false || "");
 
   const dispatch = useDispatch();
 

@@ -13,7 +13,7 @@ const ProfileView = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState(null || "");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

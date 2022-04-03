@@ -17,7 +17,7 @@ import { listItemDetails } from "../events/itemEvents.js";
 
 const ProductScreen = () => {
   const navigate = useNavigate();
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(1 || "");
   const dispatch = useDispatch();
   const params = useParams();
 

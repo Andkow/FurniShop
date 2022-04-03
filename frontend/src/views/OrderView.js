@@ -15,7 +15,7 @@ import {
 const OrderView = () => {
   //const orderId = match.params.id
   const { id } = useParams();
-  const [sdkReady, setSdkReady] = useState(false);
+  const [sdkReady, setSdkReady] = useState(false || "");
 
   const dispatch = useDispatch();
 

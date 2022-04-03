@@ -12,7 +12,7 @@ const SignupView = () => {
   const [email, setEmail] = useState(""); //Component level state for email
   const [password, setPassword] = useState(""); //Component level state for password
   const [confirmPassword, setConfirmPassword] = useState(""); //Component level state for confirming password
-  const [message, setMessage] = useState(null); //Component level state for message
+  const [message, setMessage] = useState(null || ""); //Component level state for message
 
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
