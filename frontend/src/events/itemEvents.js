@@ -15,7 +15,11 @@ import {
   ITEM_UPDATE_REQUEST,
   ITEM_UPDATE_SUCCESS,
   ITEM_UPDATE_FAIL,
+  ITEM_CREATE_REVIEW_REQUEST,
+  ITEM_CREATE_REVIEW_SUCCESS,
+  ITEM_CREATE_REVIEW_FAIL,
 } from "../constants/itemConstants";
+import { logout } from "./custEvents";
 
 // Fetching data from "/api/products"
 export const listItems = () => async (dispatch) => {
@@ -165,3 +169,41 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     });
   }
 };
+
+export const createProductReview =
+  (productId, review) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ITEM_CREATE_REVIEW_REQUEST,
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      await axios.post(`/api/products/${productId}/reviews`, review, config);
+
+      dispatch({
+        type: ITEM_CREATE_REVIEW_SUCCESS,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      if (message === "Not authorized, token failed") {
+        dispatch(logout());
+      }
+      dispatch({
+        type: ITEM_CREATE_REVIEW_FAIL,
+        payload: message,
+      });
+    }
+  };
