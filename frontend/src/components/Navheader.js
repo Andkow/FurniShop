@@ -3,9 +3,12 @@ import logo from "../logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import SearchBox from './SearchBox'
 import { FaShoppingBag, FaSignInAlt } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { logout } from "../events/custEvents.js";
+
+
 
 const Navheader = () => {
   const dispatch = useDispatch();
@@ -25,6 +28,7 @@ const Navheader = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <SearchBox />
             <Nav className="ms-auto">
               <LinkContainer to="/cart/:id">
                 <Nav.Link active={false}>

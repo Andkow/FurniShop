@@ -22,12 +22,12 @@ import {
 import { logout } from "./custEvents";
 
 // Fetching data from "/api/products"
-export const listItems = () => async (dispatch) => {
+export const listItems = (keyword = '') => async (dispatch) => {
   try {
     dispatch({ type: ITEM_LIST_REQUEST });
 
     // Requesting data
-    const { data } = await axios.get("/api/products");
+    const { data } = await axios.get(`/api/products?keyword=${keyword}`);
 
     dispatch({
       type: ITEM_LIST_SUCCESS,
