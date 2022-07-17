@@ -18,31 +18,36 @@ import {
   ITEM_CREATE_REVIEW_REQUEST,
   ITEM_CREATE_REVIEW_SUCCESS,
   ITEM_CREATE_REVIEW_FAIL,
+  ITEM_TOP_REQUEST,
+  ITEM_TOP_SUCCESS,
+  ITEM_TOP_FAIL,
 } from "../constants/itemConstants";
 import { logout } from "./custEvents";
 
 // Fetching data from "/api/products"
-export const listItems = (keyword = '') => async (dispatch) => {
-  try {
-    dispatch({ type: ITEM_LIST_REQUEST });
+export const listItems =
+  (keyword = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: ITEM_LIST_REQUEST });
 
-    // Requesting data
-    const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+      // Requesting data
+      const { data } = await axios.get(`/api/products?keyword=${keyword}`);
 
-    dispatch({
-      type: ITEM_LIST_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: ITEM_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message //Getting custom error
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: ITEM_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ITEM_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message //Getting custom error
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 // Fetching data from "/api/items/:id"
 export const listItemDetails = (id) => async (dispatch) => {
@@ -207,3 +212,24 @@ export const createProductReview =
       });
     }
   };
+
+export const listTopProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: ITEM_TOP_REQUEST });
+
+    const { data } = await axios.get(`/api/products/top`);
+
+    dispatch({
+      type: ITEM_TOP_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ITEM_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

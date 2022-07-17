@@ -4,12 +4,13 @@ import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import ProductCarousel from "../components/ProductCarousel";
 import { listItems } from "../events/itemEvents.js";
 import { useParams } from "react-router-dom";
 
 const HomeView = () => {
   const dispatch = useDispatch();
-  const { keyword } = useParams()
+  const { keyword } = useParams();
 
   const itemList = useSelector((state) => state.itemList);
   const { loading, error, products } = itemList;
@@ -20,6 +21,7 @@ const HomeView = () => {
 
   return (
     <>
+      {!keyword && <ProductCarousel />}
       <h1 className="text-center">
         <strong>Latest Products</strong>
       </h1>
