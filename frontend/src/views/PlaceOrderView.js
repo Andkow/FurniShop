@@ -14,6 +14,12 @@ const PlaceOrderView = () => {
 
   const cart = useSelector((state) => state.cart);
 
+  if (!cart.shippingAddress.address) {
+    navigate("/shipping");
+  } else if (!cart.paymentMethod) {
+    navigate("/payment");
+  }
+
   //   Calculate prices
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
