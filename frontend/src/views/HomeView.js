@@ -24,6 +24,9 @@ const HomeView = () => {
   return (
     <>
       <Meta />
+      <h2 className="text-center">
+        <strong>Top Products</strong>
+      </h2>
       {!keyword ? (
         <ProductCarousel />
       ) : (
@@ -31,9 +34,9 @@ const HomeView = () => {
           Go Back
         </Link>
       )}
-      <h1 className="text-center">
+      <h2 className="text-center mt-2">
         <strong>Latest Products</strong>
-      </h1>
+      </h2>
       {loading ? (
         <Loader />
       ) : error ? (
