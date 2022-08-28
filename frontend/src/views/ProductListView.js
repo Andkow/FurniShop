@@ -36,7 +36,7 @@ const ProductListView = () => {
   useEffect(() => {
     dispatch({ type: ITEM_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
+    if (!userInfo || !userInfo.isAdmin) {
       navigate("/login");
     }
 
